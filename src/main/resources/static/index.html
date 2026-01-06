@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista Todo</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Lista zadań</h1>
+
+        <!-- formularz -->
+        <div class="add-section">
+            <h2>Dodaj zadanie</h2>
+            <form id="todoForm">
+                <label>Tytuł:</label>
+                <input type="text" id="todoTitle" placeholder="np. Zrobić zakupy" required>
+
+                <label>Opis:</label>
+                <textarea id="todoDescription" rows="3" placeholder="Dodatkowe informacje..."></textarea>
+
+                <button type="submit">Dodaj</button>
+            </form>
+        </div>
+
+        <!-- szukanie i filtry -->
+        <div class="filters">
+            <input type="text" id="searchInput" placeholder="Szukaj...">
+
+            <div class="filter-btns">
+                <button class="filter-btn active" data-filter="all">Wszystkie</button>
+                <button class="filter-btn" data-filter="incomplete">Do zrobienia</button>
+                <button class="filter-btn" data-filter="completed">Zrobione</button>
+            </div>
+        </div>
+
+        <!-- lista -->
+        <div class="todos">
+            <h2>Moje zadania <span id="todoCount">(0)</span></h2>
+            <div id="todoList">
+                <p class="empty">Brak zadań. Dodaj nowe zadanie!</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
