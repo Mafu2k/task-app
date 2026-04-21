@@ -29,7 +29,7 @@ function loadTodos() {
             updateCount();
         })
         .catch(error => {
-            console.log('Błąd:', error);
+            console.error('Błąd:', error);
             alert('Nie można pobrać zadań. Sprawdź czy backend działa.');
         });
 }
@@ -101,7 +101,7 @@ function addTodo(e) {
         loadTodos();
     })
     .catch(error => {
-        console.log('Błąd:', error);
+        console.error('Błąd:', error);
         alert('Nie można dodać zadania');
     });
 }
@@ -115,7 +115,7 @@ function toggleTodo(id) {
         loadTodos();
     })
     .catch(error => {
-        console.log('Błąd:', error);
+        console.error('Błąd:', error);
     });
 }
 
@@ -131,7 +131,7 @@ function deleteTodo(id) {
         loadTodos();
     })
     .catch(error => {
-        console.log('Błąd:', error);
+        console.error('Błąd:', error);
     });
 }
 

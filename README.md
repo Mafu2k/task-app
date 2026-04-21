@@ -1,125 +1,39 @@
-# TODO List - Aplikacja do Zarządzania Zadaniami
+# task-app
 
-Prosta aplikacja webowa do zarządzania listą zadań, stworzona w ramach laboratorium GitHub.
+Lista zadań zrobiona na laboratorium z pracy w zespole na GitHubie. Projekt robiliśmy
+we dwójkę: ja frontend, kolega backend. Każdy pracował na swojej gałęzi (`frontend`,
+`Backend`), a zmiany trafiały do `main` przez pull requesty z code review. Notatki z tego,
+jak dzieliliśmy pracę, są w [NOTATKI.md](NOTATKI.md).
 
-## 📋 Opis Projektu
+Backend to Spring Boot z REST API i bazą H2 w pamięci. Frontend to zwykły HTML, CSS
+i JavaScript serwowany przez Springa z `src/main/resources/static`. Zadania można dodawać,
+odhaczać, usuwać, wyszukiwać i filtrować po statusie.
 
-Aplikacja TODO List umożliwia:
-- ✅ Dodawanie nowych zadań z tytułem i opisem
-- ✅ Oznaczanie zadań jako wykonane
-- ✅ Usuwanie zadań
-- ✅ Wyszukiwanie zadań po tytule i opisie
-- ✅ Filtrowanie zadań (wszystkie / do zrobienia / zrobione)
+## Uruchomienie
 
-## 🛠️ Technologie
-
-### Backend
-- **Java 17**
-- **Spring Boot 4.0.1**
-- **Spring Data JPA**
-- **H2 Database** (baza danych in-memory)
-- **Maven** (zarządzanie zależnościami)
-
-### Frontend
-- **HTML5**
-- **CSS3**
-- **Vanilla JavaScript** (bez frameworków)
-
-## 👥 Zespół Projektowy
-
-- **Frontend Developer**: [Twoje imię] - implementacja interfejsu użytkownika
-- **Backend Developer**: [Imię kolegi] - architektura i logika serwera
-
-## 🚀 Jak Uruchomić Projekt
-
-### Wymagania
-- Java 17 lub wyższa
-- Maven 3.6+
-
-### Instrukcja
-
-1. Sklonuj repozytorium:
-```bash
-git clone [URL_REPOZYTORIUM]
-cd todolistaproj
-```
-
-2. Zbuduj projekt:
-```bash
-./mvnw clean package
-```
-
-3. Uruchom aplikację:
-```bash
-java -jar target/todolistaproj-0.0.1-SNAPSHOT.jar
-```
-
-4. Otwórz przeglądarkę i wejdź na:
-```
-http://localhost:8080
-```
-
-## 📁 Struktura Projektu
-
-```
-todolistaproj/
-├── src/
-│   ├── main/
-│   │   ├── java/pl/aac/app/
-│   │   │   ├── controller/      # REST API endpoints
-│   │   │   ├── model/           # Encje bazodanowe
-│   │   │   ├── repository/      # Repozytoria JPA
-│   │   │   ├── service/         # Logika biznesowa
-│   │   │   └── TodolistaprojApplication.java
-│   │   └── resources/
-│   │       ├── static/          # Pliki frontend
-│   │       │   ├── css/         # Stylizacja
-│   │       │   ├── js/          # JavaScript
-│   │       │   └── index.html   # Strona główna
-│   │       └── application.properties
-│   └── test/                    # Testy jednostkowe
-├── pom.xml
-└── README.md
-```
-
-## 🔌 API Endpoints
-
-### Pobieranie zadań
-- `GET /api/todos` - wszystkie zadania
-- `GET /api/todos/{id}` - konkretne zadanie
-- `GET /api/todos/completed` - zadania wykonane
-- `GET /api/todos/incomplete` - zadania do zrobienia
-- `GET /api/todos/search?keyword=...` - wyszukiwanie
-
-### Zarządzanie zadaniami
-- `POST /api/todos` - dodanie nowego zadania
-- `PUT /api/todos/{id}` - aktualizacja zadania
-- `PATCH /api/todos/{id}/toggle` - przełączenie statusu
-- `DELETE /api/todos/{id}` - usunięcie zadania
-
-## 📊 Baza Danych
-
-Aplikacja używa H2 Database (in-memory), która jest automatycznie tworzona przy starcie.
-
-### Konsola H2
-Dostępna pod adresem: `http://localhost:8080/h2-console`
-- JDBC URL: `jdbc:h2:mem:tododb`
-- User: `sa`
-- Password: (puste)
-
-## 🧪 Testowanie
+Potrzebna jest Java 17+.
 
 ```bash
-./mvnw test
+./mvnw spring-boot:run
 ```
 
-## 📝 Proces Pracy
+Aplikacja wstaje na http://localhost:8080. Konsola bazy jest pod `/h2-console`
+(JDBC URL `jdbc:h2:mem:tododb`, użytkownik `sa`, bez hasła). Dane znikają po restarcie.
 
-1. **Planowanie** - GitHub Issues i Project Board
-2. **Implementacja** - praca na oddzielnych gałęziach (frontend/backend)
-3. **Code Review** - Pull Requests z przeglądami kodu
-4. **Integracja** - merge do głównej gałęzi po zatwierdzeniu
+## API
 
-## 📄 Licencja
+| Metoda | Ścieżka | Opis |
+|--------|---------|------|
+| GET | `/api/todos` | wszystkie zadania |
+| GET | `/api/todos/{id}` | jedno zadanie |
+| GET | `/api/todos/completed` | zrobione |
+| GET | `/api/todos/incomplete` | do zrobienia |
+| GET | `/api/todos/search?keyword=...` | szukanie w tytule i opisie |
+| POST | `/api/todos` | nowe zadanie |
+| PUT | `/api/todos/{id}` | edycja |
+| PATCH | `/api/todos/{id}/toggle` | zmiana statusu |
+| DELETE | `/api/todos/{id}` | usunięcie |
 
-Projekt edukacyjny - Laboratorium GitHub
+## Licencja
+
+MIT
