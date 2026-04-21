@@ -25,10 +25,6 @@ Aplikacja TODO List umożliwia:
 - **CSS3**
 - **Vanilla JavaScript** (bez frameworków)
 
-## 👥 Zespół Projektowy
-
-- **Frontend Developer**: [Twoje imię] - implementacja interfejsu użytkownika
-- **Backend Developer**: [Imię kolegi] - architektura i logika serwera
 
 ## 🚀 Jak Uruchomić Projekt
 
